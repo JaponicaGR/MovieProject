@@ -1,0 +1,25 @@
+@import "../../../assets/scss_partials/mixins/general";
+
+
+.full-layout {
+  height: 100vh;
+}
+
+.bottom-layout {
+
+  position: relative;
+
+  .col-fixed {
+
+    position: absolute;
+    z-index: 8;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #f8fafc;
+
+    width: $sidebar-width;
+
+  }
+
+}

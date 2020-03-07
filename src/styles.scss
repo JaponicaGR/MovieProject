@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+
+/** Import Partials **********************/
+@import "assets/scss_partials/mixins/general";
+
+@import '~material-icons/iconfont/material-icons.css';
+
+/** General Style Rules ******************/
+
+body {
+
+  font-family: $Roboto_font;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+
+  color: $text-color;
+  background-color: $bg-color;
+
+}
+
+h1, h2, h3, h4, h5, h6, p, div, label, input {
+  padding: 0;
+  margin: 0;
+}
+
+
+

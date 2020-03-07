@@ -1,0 +1,91 @@
+@import "../../../assets/scss_partials/mixins/general";
+
+:host {
+
+  position: fixed;
+  z-index: 8;
+  top: 82px;
+  left: 0;
+  width: 400px;
+  height: calc(100% - 82px);
+  overflow: auto;
+
+  @include background-image(linear-gradient(to bottom right, $bg-sidebar, $bg-sidebar 40%, #ffffff));
+
+}
+
+.list-wrapper {
+
+  .list-title {
+
+    font-size: 18px;
+    padding: 25px 2vw;
+    font-weight: 500;
+
+  }
+
+  .movie-list {
+
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    > li {
+      padding: 1px 0;
+    }
+
+  }
+
+  .list-group-item {
+
+    position: relative;
+    padding: 15px 70px 15px 2vw;
+    font-size: 15px;
+    line-height:125%;
+    color: lighten($text-color, 10%);
+    background-color: transparent;
+    border: 0;
+    //border-top: 0px solid rgba(0,0,0,.125);
+
+    &:after {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+
+      content: "\e5cc";
+      font-family: $material_font;
+      font-size: 25px;
+      color: lighten($text-color, 15%);
+
+      @include transform(translateY(-50%));
+
+    }
+
+
+    &:hover {
+      text-decoration: none;
+      @include background-image(linear-gradient(to right, rgba($highlighted, .2), rgba($highlighted, .05)));
+    }
+
+    &.active {
+
+      @include background-image(linear-gradient(to right, rgba($highlighted, .2), rgba($highlighted, .05)));
+
+      &:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        content: '';
+
+        width: 6px;
+        height: 100%;
+
+        background-color: $highlighted;
+      }
+
+    }
+
+  }
+
+}

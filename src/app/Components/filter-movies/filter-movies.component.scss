@@ -1,0 +1,41 @@
+@import "../../../assets/scss_partials/mixins/general";
+
+
+#filter-widget {
+
+  position: relative;
+  display: block;
+  outline: 0;
+  border: 0;
+
+  #filterInput {
+
+    display: block;
+    border: 1px solid $highlighted;
+    width: 400px;
+    height: 46px;
+    padding: 0 50px 0 25px;
+    outline: 0;
+    color: inherit;
+    font-weight: 500;
+
+    @include border-radius(23px);
+    background-color: rgba($bg-color, .3);
+
+    @include placeholder(lighten($text-color, 45%));
+
+  }
+
+  .search-icon {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    z-index: 1;
+    color: $highlighted;
+    font-size: 24px;
+
+    @include transform(translateY(-50%));
+  }
+
+
+}
