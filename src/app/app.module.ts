@@ -11,6 +11,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {StoreModule} from '@ngrx/store';
 import {movieReducer} from './Components/sidenav/state/movies.reducers';
 import {appReducer} from './AppState/app.reducers';
+import {EffectsModule} from '@ngrx/effects';
+import {MoviesEffects} from './Components/sidenav/state/movies.effects';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import {appReducer} from './AppState/app.reducers';
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    StoreModule.forRoot(appReducer)
+    StoreModule.forRoot(appReducer),
+    EffectsModule.forRoot([MoviesEffects])
   ],
   providers: [],
   bootstrap: [LayoutComponent]

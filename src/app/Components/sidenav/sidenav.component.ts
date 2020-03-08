@@ -3,7 +3,7 @@ import {PopularMoviesService} from '../../Services/popular-movies.service';
 import {Store} from '@ngrx/store';
 import {Movie} from '../../Models/MovieModel';
 import {from, Observable, of} from 'rxjs';
-import {RefreshDataClass} from './state/movies.actions';
+import {FetchDataAPIClass} from './state/movies.actions';
 import {AppState} from '../../AppState/app.reducers';
 import {MoviesState} from './state/movies.reducers';
 import {flatMap, map, mergeMap, pluck, switchMap} from 'rxjs/operators';
@@ -26,19 +26,21 @@ export class SidenavComponent implements OnInit {
 
     this.movies = this.store.select('moviesReducer');
 
-    this.pmApi.getPopularMovies()
+    this.store.dispatch(new FetchDataAPIClass());
 
-      .pipe(
-
-        pluck('results'),
-
-        map((rawMoviesArray: any[]) => rawMoviesArray.map(movie => new Movie(movie.id, movie.title)))
-
-      ).subscribe(data => {
-
-        this.store.dispatch(new RefreshDataClass(data));
-
-      });
+    // this.pmApi.getPopularMovies()
+    //
+    //   .pipe(
+    //
+    //     pluck('results'),
+    //
+    //     map((rawMoviesArray: any[]) => rawMoviesArray.map(movie => new Movie(movie.id, movie.title)))
+    //
+    //   ).subscribe(data => {
+    //
+    //     this.store.dispatch(new FetchDataAPIClass());
+    //
+    //   });
 
   }
 

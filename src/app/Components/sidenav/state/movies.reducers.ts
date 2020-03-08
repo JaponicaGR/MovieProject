@@ -8,20 +8,19 @@ export interface MoviesState {
 }
 
 const initialState: MoviesState = {
-  movies: [
-    new Movie(1, 'The Godfather'),
-    new Movie(2, 'Butterfly Effect')
-  ]
+  movies: []
 };
 
 
-export function movieReducer(state = initialState, action: MoviesStateTypes.RefreshDataClass) {
+export function movieReducer(state = initialState, action: MoviesStateTypes.MoviesActionType) {
 
   switch (action.type) {
-    case MoviesActionEnum.REFRESH_DATA:
+    case MoviesActionEnum.REFRESH_DATA_STORE:
       return {
         ...initialState,
         movies: [...state.movies, ...action.payload]};
+    case MoviesActionEnum.FETCH_DATA_API:
+      return state;
     default:
       return state;
   }
