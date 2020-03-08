@@ -8,6 +8,9 @@ import {WorkspaceComponent} from './Components/workspace/workspace.component';
 import {MovieDetailsComponent} from './Components/movie-details/movie-details.component';
 import {FilterMoviesComponent} from './Components/filter-movies/filter-movies.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {StoreModule} from '@ngrx/store';
+import {movieReducer} from './Components/sidenav/state/movies.reducers';
+import {appReducer} from './AppState/app.reducers';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,8 @@ import {ReactiveFormsModule} from '@angular/forms';
   imports: [
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot(appReducer)
   ],
   providers: [],
   bootstrap: [LayoutComponent]
