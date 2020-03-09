@@ -15,6 +15,9 @@ import {MoviesEffects} from './Components/sidenav/state/movies.effects';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './Components/home/home.component';
 import {StarRatingModule} from 'angular-star-rating';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 const appRoutes: Routes = [
   {
@@ -45,7 +48,9 @@ const appRoutes: Routes = [
     StoreModule.forRoot(appReducer),
     EffectsModule.forRoot([MoviesEffects]),
     RouterModule.forRoot(appRoutes),
-    StarRatingModule.forRoot()
+    StarRatingModule.forRoot(),
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [LayoutComponent]

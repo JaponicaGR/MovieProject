@@ -12,6 +12,28 @@
 
   @include background-image(linear-gradient(to bottom right, $bg-sidebar, $bg-sidebar 40%, #ffffff));
 
+  @include media-breakpoint-down(md) {
+
+    @include transform(translateX(-100%));
+    @include transition(all, .3s);
+
+    &.collapsed {
+      @include transform(translateX(0));
+    }
+
+  }
+
+  @include media-breakpoint-down(xs) { width: 90vw }
+
+
+
+}
+
+.spinner {
+
+  display: block;
+  margin: 10vh auto 0;
+
 }
 
 .list-wrapper {

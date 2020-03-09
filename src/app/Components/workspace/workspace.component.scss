@@ -7,6 +7,8 @@
   width: 100vw;
   height: 100%;
 
+  @include media-breakpoint-down(md) { padding-left: 0; }
+
   .container-padder {
 
     padding: 30px;

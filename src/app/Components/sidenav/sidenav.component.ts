@@ -12,15 +12,13 @@ import {Movie} from '../../Models/MovieModel';
 export class SidenavComponent implements OnInit {
 
   // public movies$: Observable<MoviesState>;
-  public movies: Movie[];
+  public movies: Movie[] = [];
 
   constructor(
     private store: Store<AppState>
   ) { }
 
   ngOnInit(): void {
-
-    console.log('Init Sidenav');
 
     this.store.dispatch(new FetchDataAPIClass());
 

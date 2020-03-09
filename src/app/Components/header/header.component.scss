@@ -22,4 +22,18 @@ header {
     font-size: 30px;
   }
 
+  .hamburger-btn {
+    display: none;
+
+    @include media-breakpoint-down(md) { display: block; }
+
+    i {
+      display: block;
+      font-size: 34px;
+      padding: 4px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+  }
+
 }

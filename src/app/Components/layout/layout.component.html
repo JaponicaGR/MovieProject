@@ -6,14 +6,14 @@
 
 
   <!-- SideBar Component -->
-  <app-sidenav></app-sidenav>
+  <app-sidenav [ngClass]="{'collapsed': isCollapsed}"></app-sidenav>
 
   <div class="row flex-column flex-nowrap no-gutters h-100">
 
     <div class="col-auto">
 
       <!--  Header Bar Component  -->
-      <app-header></app-header>
+      <app-header (onToggle)="toggleClass()"></app-header>
 
     </div>
 

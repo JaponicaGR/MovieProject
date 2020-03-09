@@ -5,6 +5,15 @@
   width: 100%;
 }
 
+.movie-card-wrapper {
+
+  @media all and (min-width: 1440px) {
+    @include flex(0 0 60%);
+    max-width: 60%;
+  }
+
+}
+
 .movie-card {
 
   padding: 5% 5%;
