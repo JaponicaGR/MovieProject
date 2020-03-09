@@ -26,7 +26,7 @@ export class SidenavComponent implements OnInit {
 
     this.store.select('moviesReducer').subscribe(state => {
 
-      this.movies = state.movies;
+      this.movies = (state.filteredMovies.length) ? state.filteredMovies : state.movies;
 
     });
 

@@ -5,7 +5,8 @@ export enum MoviesActionEnum {
   FETCH_DATA_API = '[Movies] Fetch Data From Api',
   REFRESH_DATA_STORE = '[Movies] Refresh Data to Store',
   FETCH_DATA_ERROR = '[Movies] Error Occured',
-  STORE_ACTIVE_MOVIE = '[Movies] Set Active Movie Details'
+  STORE_ACTIVE_MOVIE = '[Movies] Set Active Movie Details',
+  FILTER_MOVIES = '[Movies] Filter Movies on Keypress'
 }
 
 
@@ -43,5 +44,17 @@ export class StoreActiveMovieClass implements Action {
 
 }
 
+export class FilterMoviesClass implements Action {
 
-export type MoviesActionType = FetchDataAPIClass | RefreshDataStoreClass | StoreActiveMovieClass;
+  readonly type: MoviesActionEnum = MoviesActionEnum.FILTER_MOVIES;
+
+  constructor(public payload: string) {}
+
+}
+
+
+export type MoviesActionType =
+  FetchDataAPIClass |
+  RefreshDataStoreClass |
+  StoreActiveMovieClass |
+  FilterMoviesClass;

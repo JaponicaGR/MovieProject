@@ -13,25 +13,28 @@ import {StoreActiveMovieClass} from '../sidenav/state/movies.actions';
 export class MovieDetailsComponent implements OnInit {
 
   public activeMovie: Movie = null;
+  public rate: number;
 
   constructor(private route: ActivatedRoute, private store: Store<AppState>) { }
 
   ngOnInit(): void {
 
-
     this.route.paramMap.subscribe(param => {
 
       this.store.dispatch(new StoreActiveMovieClass(+param.get('id')));
 
-      this.store.select('moviesReducer').subscribe(data => {
+    });
 
-        this.activeMovie = data.detailMovie;
+    this.store.select('moviesReducer').subscribe(data => {
 
-      });
+      this.activeMovie = data.detailMovie;
 
+      console.log(data.detailMovie.voteAverage);
 
+      this.rate = Math.round(data.detailMovie.voteAverage) / 2;
 
     });
+
 
 
 

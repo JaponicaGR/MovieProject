@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {Store} from '@ngrx/store';
+import {AppState} from '../../AppState/app.reducers';
+import {FilterMoviesClass} from '../sidenav/state/movies.actions';
 
 @Component({
   selector: 'app-filter-movies',
@@ -8,14 +10,16 @@ import {FormControl} from '@angular/forms';
 })
 export class FilterMoviesComponent implements OnInit {
 
-  public filterCriteria: FormControl;
-  public placeholder: string = 'Filter keywords (ex. the go, Indep)';
+  public placeholder = 'Filter keywords (ex. the go, Indep)';
 
-  constructor() {
-    this.filterCriteria = new FormControl('');
-  }
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
+  }
+
+  onKeyPress($event: KeyboardEvent) {
+    const textValue = ($event.target as HTMLInputElement).value;
+    this.store.dispatch(new FilterMoviesClass(textValue));
   }
 
 }

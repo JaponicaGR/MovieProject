@@ -18,6 +18,15 @@
 
         <p class="movie-description">{{activeMovie.overview}}</p>
 
+        <star-rating
+          [starType]="'svg'"
+          [showHalfStars]="true"
+          [readOnly]="true"
+          [labelPosition]="'top'"
+          [labelText]="'sdsdsd'"
+          [rating]="rate"
+        ></star-rating>
+
       </div>
 
     </div>

@@ -9,12 +9,12 @@ import {MovieDetailsComponent} from './Components/movie-details/movie-details.co
 import {FilterMoviesComponent} from './Components/filter-movies/filter-movies.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {StoreModule} from '@ngrx/store';
-import {movieReducer} from './Components/sidenav/state/movies.reducers';
 import {appReducer} from './AppState/app.reducers';
 import {EffectsModule} from '@ngrx/effects';
 import {MoviesEffects} from './Components/sidenav/state/movies.effects';
 import {RouterModule, Routes} from '@angular/router';
-import { HomeComponent } from './Components/home/home.component';
+import {HomeComponent} from './Components/home/home.component';
+import {StarRatingModule} from 'angular-star-rating';
 
 const appRoutes: Routes = [
   {
@@ -44,7 +44,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     StoreModule.forRoot(appReducer),
     EffectsModule.forRoot([MoviesEffects]),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    StarRatingModule.forRoot()
   ],
   providers: [],
   bootstrap: [LayoutComponent]
