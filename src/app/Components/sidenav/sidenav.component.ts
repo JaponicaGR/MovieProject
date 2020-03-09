@@ -15,7 +15,7 @@ import {flatMap, map, mergeMap, pluck, switchMap} from 'rxjs/operators';
 })
 export class SidenavComponent implements OnInit {
 
-  public movies: Observable<MoviesState>;
+  public movies$: Observable<MoviesState>;
 
   constructor(
     private pmApi: PopularMoviesService,
@@ -24,24 +24,9 @@ export class SidenavComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.movies = this.store.select('moviesReducer');
+    this.movies$ = this.store.select('moviesReducer');
 
     this.store.dispatch(new FetchDataAPIClass());
-
-    // this.pmApi.getPopularMovies()
-    //
-    //   .pipe(
-    //
-    //     pluck('results'),
-    //
-    //     map((rawMoviesArray: any[]) => rawMoviesArray.map(movie => new Movie(movie.id, movie.title)))
-    //
-    //   ).subscribe(data => {
-    //
-    //     this.store.dispatch(new FetchDataAPIClass());
-    //
-    //   });
-
   }
 
 }

@@ -13,6 +13,11 @@ import {movieReducer} from './Components/sidenav/state/movies.reducers';
 import {appReducer} from './AppState/app.reducers';
 import {EffectsModule} from '@ngrx/effects';
 import {MoviesEffects} from './Components/sidenav/state/movies.effects';
+import {RouterModule, Routes} from '@angular/router';
+
+const appRoutes: Routes = [
+  { path: 'movie/:id', component: MovieDetailsComponent },
+];
 
 @NgModule({
   declarations: [
@@ -28,7 +33,8 @@ import {MoviesEffects} from './Components/sidenav/state/movies.effects';
     HttpClientModule,
     ReactiveFormsModule,
     StoreModule.forRoot(appReducer),
-    EffectsModule.forRoot([MoviesEffects])
+    EffectsModule.forRoot([MoviesEffects]),
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [LayoutComponent]

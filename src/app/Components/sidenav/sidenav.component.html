@@ -4,11 +4,14 @@
   <h2 class="list-title">Popular Movies:</h2>
 
   <ul class="movie-list list-group">
-    <li *ngFor="let movie of (movies | async).movies">
-      <a class="list-group-item" href="#">{{movie.title}}</a>
+
+    <li *ngFor="let movie of (movies$ | async).movies">
+
+      <a class="list-group-item" [routerLink]="['/movie', movie.id]" [routerLinkActive]="'active'">
+        <span>{{movie.title}}</span>
+      </a>
+
     </li>
-
-
 
   </ul>
 

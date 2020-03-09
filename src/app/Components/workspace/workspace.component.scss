@@ -1,0 +1,10 @@
+@import "../../../assets/scss_partials/mixins/general";
+
+:host {
+
+  display: block;
+  padding-left: $sidebar-width;
+  width: 100vw;
+  height: 100%;
+
+}

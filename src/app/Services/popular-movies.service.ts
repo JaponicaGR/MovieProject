@@ -13,13 +13,6 @@ export class PopularMoviesService {
 
   constructor(private http: HttpClient) { }
 
-  getPopularMovies(): Observable<any> {
-
-    let popular_movies_path: string = '/discover/movie?sort_by=popularity.desc';
-
-    return this.http.get('https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=9198fa6d9a9713bc6b03ee9582525917');
-
-  }
 
 
 }
