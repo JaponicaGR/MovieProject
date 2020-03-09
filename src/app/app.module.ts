@@ -14,9 +14,18 @@ import {appReducer} from './AppState/app.reducers';
 import {EffectsModule} from '@ngrx/effects';
 import {MoviesEffects} from './Components/sidenav/state/movies.effects';
 import {RouterModule, Routes} from '@angular/router';
+import { HomeComponent } from './Components/home/home.component';
 
 const appRoutes: Routes = [
-  { path: 'movie/:id', component: MovieDetailsComponent },
+  {
+    path: '', redirectTo: '/home', pathMatch: 'full',
+  },
+  {
+    path: 'home', component: HomeComponent,
+  },
+  {
+    path: 'movie/:id', component: MovieDetailsComponent
+  },
 ];
 
 @NgModule({
@@ -26,7 +35,8 @@ const appRoutes: Routes = [
     SidenavComponent,
     WorkspaceComponent,
     MovieDetailsComponent,
-    FilterMoviesComponent
+    FilterMoviesComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

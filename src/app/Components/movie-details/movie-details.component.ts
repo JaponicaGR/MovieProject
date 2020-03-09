@@ -18,17 +18,22 @@ export class MovieDetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
+
     this.route.paramMap.subscribe(param => {
 
       this.store.dispatch(new StoreActiveMovieClass(+param.get('id')));
 
+      this.store.select('moviesReducer').subscribe(data => {
+
+        this.activeMovie = data.detailMovie;
+
+      });
+
+
+
     });
 
-    this.store.select('moviesReducer').subscribe(data => {
 
-      this.activeMovie = data.detailMovie;
-
-    });
 
   }
 

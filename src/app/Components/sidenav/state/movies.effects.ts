@@ -6,6 +6,8 @@ import {of} from 'rxjs';
 import {Movie, RawMovie} from '../../../Models/MovieModel';
 import {Injectable} from '@angular/core';
 import {FetchErrorAPIClass} from './movies.actions';
+import {API} from '../../../Constants/GlobalConsts';
+import {ActivatedRoute} from '@angular/router';
 
 @Injectable()
 export class MoviesEffects {
@@ -15,7 +17,7 @@ export class MoviesEffects {
     switchMap(_ => {
 
       return this.http
-        .get('https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&page=100&api_key=9198fa6d9a9713bc6b03ee9582525917')
+        .get(API.PATH + 'sort_by=popularity.desc&api_key=' + API.KEY)
         .pipe(
           pluck('results'),
           map((rawMoviesArray: RawMovie[]) => {
@@ -25,7 +27,7 @@ export class MoviesEffects {
                 movie.title,
                 movie.vote_average,
                 movie.vote_count,
-                movie.poster_path,
+                API.IMAGE_PATH + movie.poster_path,
                 movie.overview,
                 movie.release_date
               );
@@ -40,6 +42,6 @@ export class MoviesEffects {
     })
   );
 
-  constructor(private actions$: Actions, private http: HttpClient) {}
+  constructor(private actions$: Actions, private http: HttpClient, private route: ActivatedRoute) {}
 
 }

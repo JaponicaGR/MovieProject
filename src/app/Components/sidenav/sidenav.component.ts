@@ -1,12 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {PopularMoviesService} from '../../Services/popular-movies.service';
+import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {Movie} from '../../Models/MovieModel';
-import {from, Observable, of} from 'rxjs';
 import {FetchDataAPIClass} from './state/movies.actions';
 import {AppState} from '../../AppState/app.reducers';
-import {MoviesState} from './state/movies.reducers';
-import {flatMap, map, mergeMap, pluck, switchMap} from 'rxjs/operators';
+import {Movie} from '../../Models/MovieModel';
 
 @Component({
   selector: 'app-sidenav',
@@ -15,18 +11,26 @@ import {flatMap, map, mergeMap, pluck, switchMap} from 'rxjs/operators';
 })
 export class SidenavComponent implements OnInit {
 
-  public movies$: Observable<MoviesState>;
+  // public movies$: Observable<MoviesState>;
+  public movies: Movie[];
 
   constructor(
-    private pmApi: PopularMoviesService,
     private store: Store<AppState>
   ) { }
 
   ngOnInit(): void {
 
-    this.movies$ = this.store.select('moviesReducer');
+    console.log('Init Sidenav');
 
     this.store.dispatch(new FetchDataAPIClass());
+
+    this.store.select('moviesReducer').subscribe(state => {
+
+      this.movies = state.movies;
+
+    });
+
+
   }
 
 }

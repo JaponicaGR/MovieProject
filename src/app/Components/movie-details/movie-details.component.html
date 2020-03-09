@@ -1,1 +1,27 @@
-<p *ngIf="activeMovie">{{activeMovie.title}}</p>
+<div class="col-8">
+
+  <div class="card movie-card" *ngIf="activeMovie">
+
+    <div class="row flex-nowrap">
+
+      <div class="col-auto">
+
+        <img [src]="activeMovie.posterPath" [alt]="activeMovie.title + ' poster image'" class="movie-poster">
+
+      </div>
+
+      <div class="col-auto flex-shrink-1 flex-grow-1">
+
+        <h3 class="movie-title">{{activeMovie.title}}</h3>
+
+        <span><strong>Realease date: </strong>{{activeMovie.releaseDate}}</span>
+
+        <p class="movie-description">{{activeMovie.overview}}</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

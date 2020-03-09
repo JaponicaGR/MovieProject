@@ -19,6 +19,7 @@ export function movieReducer(state = initialState, action: MoviesStateTypes.Movi
   switch (action.type) {
     case MoviesActionEnum.REFRESH_DATA_STORE:
       console.log('REFRESH_DATA_STORE');
+      console.log(action.payload)
       return {
         ...state,
         movies: [...state.movies, ...action.payload]

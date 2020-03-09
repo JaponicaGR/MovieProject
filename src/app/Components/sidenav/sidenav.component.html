@@ -5,7 +5,7 @@
 
   <ul class="movie-list list-group">
 
-    <li *ngFor="let movie of (movies$ | async).movies">
+    <li *ngFor="let movie of movies">
 
       <a class="list-group-item" [routerLink]="['/movie', movie.id]" [routerLinkActive]="'active'">
         <span>{{movie.title}}</span>
