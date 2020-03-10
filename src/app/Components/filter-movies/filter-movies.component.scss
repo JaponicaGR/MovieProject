@@ -1,6 +1,7 @@
 @import "../../../assets/scss_partials/mixins/general";
 
 
+
 #filter-widget {
 
   position: relative;
@@ -8,11 +9,16 @@
   outline: 0;
   border: 0;
 
+  width: 400px;
+  @include media-breakpoint-down(sm) { width: 300px }
+  @include media-breakpoint-down(xs) { width: 100%; }
+
   #filterInput {
 
     display: block;
     border: 1px solid $highlighted;
-    width: 400px;
+
+    width: 100%;
     height: 46px;
     padding: 0 50px 0 25px;
     outline: 0;
@@ -23,6 +29,8 @@
     background-color: rgba($bg-color, .3);
 
     @include placeholder(lighten($text-color, 45%));
+
+
 
   }
 

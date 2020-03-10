@@ -34,9 +34,9 @@ export class MoviesEffects {
             });
           }),
           map(data => new MoviesStateTypes.RefreshDataStoreClass(data)),
-          // catchError((error: HttpErrorResponse) => {
-          //   return of(new FetchErrorAPIClass('Something Went Wrong'));
-          // })
+          catchError((error: HttpErrorResponse) => {
+            return of(new FetchErrorAPIClass(error));
+          })
         );
 
     })

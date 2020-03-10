@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>An Error Occured!</h1>
+<div mat-dialog-content>
+  <h6 class="list-title">Details:</h6>
+  <ul>
+    <li><strong>Status Code: </strong>{{data.error.status}}</li>
+    <li><strong>Error Type: </strong>{{data.error.statusText}}</li>
+    <li><strong>Error Message: </strong>{{data.error.message}}</li>
+
+  </ul>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onclick()">Ok, maybe later</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>RETRY</button>
+</div>
+

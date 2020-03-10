@@ -3,6 +3,7 @@ import {Store} from '@ngrx/store';
 import {FetchDataAPIClass} from './state/movies.actions';
 import {AppState} from '../../AppState/app.reducers';
 import {Movie} from '../../Models/MovieModel';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
@@ -15,7 +16,8 @@ export class SidenavComponent implements OnInit {
   public movies: Movie[] = [];
 
   constructor(
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {

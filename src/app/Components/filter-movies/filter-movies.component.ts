@@ -10,11 +10,19 @@ import {FilterMoviesClass} from '../sidenav/state/movies.actions';
 })
 export class FilterMoviesComponent implements OnInit {
 
+  isDisable = false;
   public placeholder = 'Filter keywords (ex. the go, Indep)';
 
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
+
+    this.store.select('moviesReducer').subscribe(state => {
+
+      this.isDisable = Boolean(state.httpError);
+
+    });
+
   }
 
   onKeyPress($event: KeyboardEvent) {

@@ -1,5 +1,6 @@
 import {Action} from '@ngrx/store';
 import {Movie} from '../../../Models/MovieModel';
+import {HttpErrorResponse} from '@angular/common/http';
 
 export enum MoviesActionEnum {
   FETCH_DATA_API = '[Movies] Fetch Data From Api',
@@ -31,7 +32,7 @@ export class FetchErrorAPIClass implements Action {
 
   readonly type: MoviesActionEnum = MoviesActionEnum.FETCH_DATA_ERROR;
 
-  constructor(public payload: string) {}
+  constructor(public payload: HttpErrorResponse) {}
 
 }
 
@@ -57,4 +58,5 @@ export type MoviesActionType =
   FetchDataAPIClass |
   RefreshDataStoreClass |
   StoreActiveMovieClass |
-  FilterMoviesClass;
+  FilterMoviesClass |
+  FetchErrorAPIClass;

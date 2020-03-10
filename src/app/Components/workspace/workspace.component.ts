@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-workspace',
@@ -9,7 +11,6 @@ export class WorkspaceComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

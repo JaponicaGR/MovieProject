@@ -15,13 +15,18 @@ import {MoviesEffects} from './Components/sidenav/state/movies.effects';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './Components/home/home.component';
 import {StarRatingModule} from 'angular-star-rating';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule } from '@angular/material/slider';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ErrorModalComponent } from './Components/error-modal/error-modal.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
+
 
 const appRoutes: Routes = [
   {
-    path: '', redirectTo: '/home', pathMatch: 'full',
+    path: '', redirectTo: '/home', pathMatch: 'full'
   },
   {
     path: 'home', component: HomeComponent,
@@ -29,6 +34,7 @@ const appRoutes: Routes = [
   {
     path: 'movie/:id', component: MovieDetailsComponent
   },
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
@@ -39,7 +45,9 @@ const appRoutes: Routes = [
     WorkspaceComponent,
     MovieDetailsComponent,
     FilterMoviesComponent,
-    HomeComponent
+    HomeComponent,
+    ErrorModalComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -50,8 +58,11 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     StarRatingModule.forRoot(),
     BrowserAnimationsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    MatButtonModule
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [],
   bootstrap: [LayoutComponent]
 })

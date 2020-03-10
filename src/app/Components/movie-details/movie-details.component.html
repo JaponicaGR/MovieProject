@@ -2,30 +2,48 @@
 
   <div class="card movie-card" *ngIf="activeMovie">
 
-    <div class="row flex-nowrap">
+    <div class="position-relative">
 
-      <div class="col-auto">
+      <div class="row flex-sm-nowrap">
 
-        <img [src]="activeMovie.posterPath" [alt]="activeMovie.title + ' poster image'" class="movie-poster">
+        <div class="col-12 col-sm-auto">
+
+          <img [src]="activeMovie.posterPath" [alt]="activeMovie.title + ' poster image'" class="movie-poster">
+
+        </div>
+
+        <div class="col-12 col-sm-auto flex-shrink-1 flex-grow-1 ">
+
+          <div class="card-content-wrapper">
+
+            <h3 class="movie-title">{{activeMovie.title}}</h3>
+
+            <span class="movie-date"><strong>Realease date: </strong>{{activeMovie.releaseDate}}</span>
+
+            <span class="movie-summary">Summary: </span>
+
+            <p class="movie-description">{{activeMovie.overview}}</p>
+
+          </div>
+
+        </div>
 
       </div>
 
-      <div class="col-auto flex-shrink-1 flex-grow-1">
+      <div class="movie-footer">
 
-        <h3 class="movie-title">{{activeMovie.title}}</h3>
+        <div class="movie-voting-wrap">
 
-        <span><strong>Realease date: </strong>{{activeMovie.releaseDate}}</span>
+          <span class="movie-votes">Vote Count: <strong>{{activeMovie.voteCount}}</strong></span>
 
-        <p class="movie-description">{{activeMovie.overview}}</p>
+          <star-rating
+            [starType]="'svg'"
+            [showHalfStars]="true"
+            [readOnly]="true"
+            [rating]="rate"
+          ></star-rating>
 
-        <star-rating
-          [starType]="'svg'"
-          [showHalfStars]="true"
-          [readOnly]="true"
-          [labelPosition]="'top'"
-          [labelText]="'sdsdsd'"
-          [rating]="rate"
-        ></star-rating>
+        </div>
 
       </div>
 

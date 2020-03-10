@@ -7,7 +7,14 @@
 
 .movie-card-wrapper {
 
-  @media all and (min-width: 1440px) {
+
+
+  @media all and (min-width: 1380px) {
+    @include flex(0 0 80%);
+    max-width: 80%;
+  }
+
+  @media all and (min-width: 1600px) {
     @include flex(0 0 60%);
     max-width: 60%;
   }
@@ -21,24 +28,89 @@
   @include border-radius(3px);
   @include box-shadow(0px 2px 8px 0px rgba(38, 38, 38, 0.11));
 
+  @include media-breakpoint-down(lg) { padding: 3%; }
+  @include media-breakpoint-down(md) { padding: 4%; }
+
   .movie-poster {
 
     display: block;
     width: 260px;
     height: auto;
 
+    @include media-breakpoint-down(lg) { width: 220px; }
+    @include media-breakpoint-down(md) { width: 240px; }
+    @include media-breakpoint-down(sm) { width: 160px; margin: 0 auto 15px }
+
   }
 
-}
+  .card-content-wrapper {
 
-.Rectangle_4_copy_3 {
-  background-color: rgb(255, 255, 255);
+    padding-bottom: 65px;
 
-  position: absolute;
-  left: 729px;
-  top: 796px;
-  width: 258px;
-  height: 138px;
-  z-index: 185;
+  }
+
+  .movie-title {
+
+    font-size: 32px;
+
+    @include media-breakpoint-down(lg) { font-size: 28px; }
+    @include media-breakpoint-down(sm) { font-size: 26px; }
+    @include media-breakpoint-down(xs) { font-size: 24px; }
+
+  }
+
+  .movie-date {
+
+    display: block;
+    margin: 4px 0;
+    font-weight: 400;
+    font-size: 16px;
+    color: lighten($text-color, 10%);
+
+    strong {
+      font-weight: 500;
+    }
+
+  }
+
+  .movie-summary {
+
+    display: block;
+    color: lighten($text-color, 10%);
+    font-size: 16px;
+    margin-top: 25px;
+    font-weight: 500;
+
+    @include media-breakpoint-down(sm) { margin-top: 15px }
+
+  }
+
+
+  .movie-description {
+
+    margin-top: 2px;
+    font-size: 15px;
+    line-height: 160%;
+    color: lighten($text-color, 20%);
+
+  }
+
+  .movie-footer {
+    text-align: right;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+
+  .movie-votes {
+    display: inline-block;
+    margin-bottom: 4px;
+  }
+
+  .movie-voting-wrap {
+    display: inline-block;
+    text-align: center;
+  }
+
 }
 

@@ -1,7 +1,7 @@
 
 <label for="filterInput" id="filter-widget">
 
-  <input type="text" id="filterInput" (keyup)="onKeyPress($event)" [placeholder]="placeholder">
+  <input type="text" id="filterInput" [disabled]="isDisable" (keyup)="onKeyPress($event)" [placeholder]="placeholder">
 
   <i class="material-icons search-icon">search</i>
 

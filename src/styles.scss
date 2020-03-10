@@ -6,6 +6,8 @@
 
 @import '../node_modules/css-star-rating/css/star-rating.min.css';
 
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 
 /** General Style Rules ******************/
 
@@ -31,3 +33,16 @@ h1, h2, h3, h4, h5, h6, p, div, label, input {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-dialog-container {
+  color: $text-color;
+
+  .list-title {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+}
+
+.mat-dialog-content {
+  word-break: break-all;
+}

@@ -14,6 +14,7 @@ export class MovieDetailsComponent implements OnInit {
 
   public activeMovie: Movie = null;
   public rate: number;
+  private id: number;
 
   constructor(private route: ActivatedRoute, private store: Store<AppState>) { }
 
@@ -21,17 +22,35 @@ export class MovieDetailsComponent implements OnInit {
 
     this.route.paramMap.subscribe(param => {
 
-      this.store.dispatch(new StoreActiveMovieClass(+param.get('id')));
+      this.id = +param.get('id');
+      this.store.dispatch(new StoreActiveMovieClass(this.id));
 
     });
 
     this.store.select('moviesReducer').subscribe(data => {
 
-      this.activeMovie = data.detailMovie;
 
-      console.log(data.detailMovie.voteAverage);
+      if (this.id && !data.detailMovie && (data.movies.length > 0)) {
+        this.store.dispatch(new StoreActiveMovieClass(this.id));
+        console.log('fromurl');
+      }
 
-      this.rate = Math.round(data.detailMovie.voteAverage) / 2;
+      if (this.id && data.detailMovie) {
+        this.activeMovie = data.detailMovie;
+        this.rate = Math.round(data.detailMovie.voteAverage) / 2;
+      }
+
+
+
+        // if (this.id && !data.detailMovie) {
+      //   console.log('asds')
+      //   this.store.dispatch(new StoreActiveMovieClass(this.id));
+      // } else {
+      //   this.activeMovie = data.detailMovie;
+      //   this.rate = Math.round(data.detailMovie.voteAverage) / 2;
+      // }
+
+
 
     });
 
