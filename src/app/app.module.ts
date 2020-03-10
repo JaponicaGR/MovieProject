@@ -34,8 +34,15 @@ const appRoutes: Routes = [
   {
     path: 'movie/:id', component: MovieDetailsComponent
   },
-  {path: '**', component: PageNotFoundComponent}
+  {
+    path: '404', component: PageNotFoundComponent
+  },
+  {
+    path: '**', redirectTo: '/404'
+  }
 ];
+
+
 
 @NgModule({
   declarations: [
@@ -66,4 +73,5 @@ const appRoutes: Routes = [
   providers: [],
   bootstrap: [LayoutComponent]
 })
+
 export class AppModule { }

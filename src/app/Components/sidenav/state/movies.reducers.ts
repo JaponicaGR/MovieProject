@@ -9,13 +9,15 @@ export interface MoviesState {
   detailMovie: Movie;
   filteredMovies: Movie[];
   httpError: HttpErrorResponse;
+  wrongId: boolean;
 }
 
 const initialState: MoviesState = {
   movies: [],
   detailMovie: null,
   filteredMovies: [],
-  httpError: null
+  httpError: null,
+  wrongId: false
 };
 
 
@@ -34,9 +36,22 @@ export function movieReducer(state = initialState, action: MoviesStateTypes.Movi
     case MoviesActionEnum.STORE_ACTIVE_MOVIE:
       console.log('STORE ACTIVE REDUCER');
       const activeMovie = state.movies.find(movie => movie.id === action.payload);
+
+      // This means that we search the movies for with a certain Id and neither match
+      // This is ONLY for the case user manually give a valid url with id, but id doesnt exist
+      // ex. /movie/00000000
+      if (state.movies.length && activeMovie === undefined) {
+        return {
+          ...state,
+          detailMovie: activeMovie ?? null,
+          wrongId: true
+        };
+      }
+
       return {
         ...state,
-        detailMovie: activeMovie ?? null
+        detailMovie: activeMovie ?? null,
+        wrongId: false
       };
 
     case MoviesActionEnum.FILTER_MOVIES:

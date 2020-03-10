@@ -11,6 +11,7 @@ export enum MoviesActionEnum {
 }
 
 
+
 export class FetchDataAPIClass implements Action {
 
   readonly type: MoviesActionEnum = MoviesActionEnum.FETCH_DATA_API;
