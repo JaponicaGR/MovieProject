@@ -128,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "MovieProject"
+  "defaultProject": "MovieProject",
+  "cli": {
+    "analytics": false
+  }
 }

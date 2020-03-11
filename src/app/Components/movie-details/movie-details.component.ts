@@ -14,7 +14,7 @@ export class MovieDetailsComponent implements OnInit {
 
   public activeMovie: Movie = null;
   public rate: number;
-  private id: number;
+  public id: number;
 
   constructor(
     private route: ActivatedRoute,

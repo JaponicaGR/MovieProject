@@ -22,9 +22,10 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
+import { TestComponent } from './Compnents/test/test.component';
 
 
-const appRoutes: Routes = [
+export const appRoutes: Routes = [
   {
     path: '', redirectTo: '/home', pathMatch: 'full'
   },
@@ -54,7 +55,8 @@ const appRoutes: Routes = [
     FilterMoviesComponent,
     HomeComponent,
     ErrorModalComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
