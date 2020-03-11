@@ -19,7 +19,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ErrorModalComponent } from './Components/error-modal/error-modal.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 

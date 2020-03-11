@@ -3,7 +3,7 @@ import {Movie} from '../../../Models/MovieModel';
 import {HttpErrorResponse} from '@angular/common/http';
 
 export enum MoviesActionEnum {
-  FETCH_DATA_API = '[Movies] Fetch Data From Api',
+  FETCH_DATA_API = '[Movies] Start Fetching Data From Api',
   REFRESH_DATA_STORE = '[Movies] Refresh Data to Store',
   FETCH_DATA_ERROR = '[Movies] Error Occured',
   STORE_ACTIVE_MOVIE = '[Movies] Set Active Movie Details',

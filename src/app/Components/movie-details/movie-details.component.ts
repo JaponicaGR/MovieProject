@@ -46,38 +46,41 @@ export class MovieDetailsComponent implements OnInit {
     });
 
 
-    this.store.select('moviesReducer').subscribe(data => {
+    this.store.select('moviesReducer').subscribe(state => {
+
+      /********************************************************
+       *  3 CASES TO HANDLE
+       *
+       *  1) User normally navigates from sidebar
+       *  2) User reload page when is on a valid (movie/:id) url
+       *  3) User manually gives a 'valid like' url with wrong id (ex. /movie/73489)
+       *     but this id dosn't match any movie
+       *
+       ********************************************************/
 
 
-      // Here we check :
-      // a) If the the id from url exist
-      // b) If the detail movie is empty
-      // c) If the data(movies) are in the state
-      // d) If Movies never searched beacuse data werenot ready
-      // If TRUE then it means we are in the case that use reload the page while he was
-      // already navigate to detail movie component
 
-      if (this.id && (data.detailMovie === null) && (data.movies.length > 0) && !data.wrongId) {
+      //-- CASE 1 ----------
+      if (this.id && !!state.detailMovie && state.httpEnd && !state.wrongId) {
+        this.activeMovie = state.detailMovie;
+        this.rate = Math.round(state.detailMovie.voteAverage) / 2;
+      }
+
+
+
+      //-- CASE 2 ----------
+      if (this.id && state.httpEnd && !state.wrongId && !state.detailMovie) {
         this.store.dispatch(new StoreActiveMovieClass(this.id));
       }
 
 
 
-      // This belongs to the strange case user try to fill the url manually with
-      // an Id that doesnt exist in any movie from the list
-
-      if (this.id && (data.detailMovie === null) && (data.movies.length > 0) && data.wrongId) {
+      //-- CASE 3 ----------
+      if (this.id && state.httpEnd && state.wrongId) {
         this.router.navigate(['/404']);
       }
 
 
-      // If TRUE we are in the case user normally navigate through the link on the sidebar
-      // The action despatched on the ngOnInit
-
-      if (this.id && data.detailMovie) {
-        this.activeMovie = data.detailMovie;
-        this.rate = Math.round(data.detailMovie.voteAverage) / 2;
-      }
 
     });
 

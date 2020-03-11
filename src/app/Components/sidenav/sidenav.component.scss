@@ -24,20 +24,27 @@
 
   }
 
-  @include media-breakpoint-down(xs) { width: 90vw; top: 112px; }
+  @include media-breakpoint-down(xs) { width: 90vw; top: 118px; }
 
 
-
-}
-
-.spinner {
-
-  display: block;
-  margin: 10vh auto 0;
 
 }
 
 .list-wrapper {
+
+  .movie-options {
+    padding: 15px 20px 15px 2vw;
+    margin-bottom: 3px;
+
+    @include media-breakpoint-down(md) { padding: 15px 30px }
+    @include media-breakpoint-down(xs) { padding: 15px 20px }
+
+    background-color: rgba($text-color, .15);
+  }
+
+  .movie-total {
+    line-height: 120%;
+  }
 
   .list-title {
 
@@ -98,9 +105,6 @@
     &:hover {
       text-decoration: none;
       @include background-image(linear-gradient(to right, rgba($highlighted, .2), rgba($highlighted, .05)));
-
-      > span { border-bottom: 0; }
-
     }
 
     &.active {
@@ -120,6 +124,13 @@
       }
 
     }
+
+  }
+
+  .spinner {
+
+    display: block;
+    margin: 10vh auto 0;
 
   }
 

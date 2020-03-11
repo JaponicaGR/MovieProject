@@ -1,11 +1,11 @@
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import * as MoviesStateTypes from './movies.actions';
 import {catchError, map, pluck, switchMap} from 'rxjs/operators';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {of} from 'rxjs';
 import {Movie, RawMovie} from '../../../Models/MovieModel';
 import {Injectable} from '@angular/core';
-import {FetchErrorAPIClass} from './movies.actions';
+import {FetchDataAPIClass, FetchErrorAPIClass} from './movies.actions';
 import {API} from '../../../Constants/GlobalConsts';
 import {ActivatedRoute} from '@angular/router';
 
@@ -14,10 +14,16 @@ export class MoviesEffects {
   @Effect()
   fetchData = this.actions$.pipe(
     ofType(MoviesStateTypes.MoviesActionEnum.FETCH_DATA_API),
-    switchMap(_ => {
+    switchMap((some: FetchDataAPIClass) => {
+
+      const queryParams = new HttpParams()
+        .set('sort_by', 'popularity.desc')
+        .set('page', some.payload)
+        .set('api_key', API.KEY);
+
 
       return this.http
-        .get(API.PATH + 'sort_by=popularity.desc&api_key=' + API.KEY)
+        .get(API.PATH, {params: queryParams})
         .pipe(
           pluck('results'),
           map((rawMoviesArray: RawMovie[]) => {
@@ -28,7 +34,7 @@ export class MoviesEffects {
                 movie.vote_average,
                 movie.vote_count,
                 API.IMAGE_PATH + movie.poster_path,
-                movie.overview,
+                movie.overview || 'No summary provided',
                 movie.release_date
               );
             });
@@ -42,6 +48,6 @@ export class MoviesEffects {
     })
   );
 
-  constructor(private actions$: Actions, private http: HttpClient, private route: ActivatedRoute) {}
+  constructor(private actions$: Actions, private http: HttpClient) {}
 
 }

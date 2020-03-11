@@ -12,8 +12,9 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class SidenavComponent implements OnInit {
 
-  // public movies$: Observable<MoviesState>;
   public movies: Movie[] = [];
+  public httpEnd = false;
+  private pageIndex = 1;
 
   constructor(
     private store: Store<AppState>,
@@ -22,15 +23,31 @@ export class SidenavComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.store.dispatch(new FetchDataAPIClass());
+
+    // The 'setTimout' function is only for presentation
+    // in order to delay dispatch action for http request and give us time
+    // to see the initial spinner on the sidebar.
+
+    setTimeout(_ => {
+      this.store.dispatch(new FetchDataAPIClass(this.pageIndex));
+    }, 500);
+
+
 
     this.store.select('moviesReducer').subscribe(state => {
 
       this.movies = (state.filteredMovies.length) ? state.filteredMovies : state.movies;
+      this.httpEnd = state.httpEnd;
+      this.pageIndex = state.pageIndex;
 
     });
 
 
+  }
+
+
+  onGetMoreMovies(): void {
+    this.store.dispatch(new FetchDataAPIClass(this.pageIndex));
   }
 
 }
