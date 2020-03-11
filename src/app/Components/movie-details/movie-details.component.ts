@@ -60,7 +60,7 @@ export class MovieDetailsComponent implements OnInit {
 
 
 
-      //-- CASE 1 ----------
+      // CASE 1 ----------
       if (this.id && !!state.detailMovie && state.httpEnd && !state.wrongId) {
         this.activeMovie = state.detailMovie;
         this.rate = Math.round(state.detailMovie.voteAverage) / 2;
@@ -68,14 +68,14 @@ export class MovieDetailsComponent implements OnInit {
 
 
 
-      //-- CASE 2 ----------
+      // CASE 2 ----------
       if (this.id && state.httpEnd && !state.wrongId && !state.detailMovie) {
         this.store.dispatch(new StoreActiveMovieClass(this.id));
       }
 
 
 
-      //-- CASE 3 ----------
+      //  CASE 3 ----------
       if (this.id && state.httpEnd && state.wrongId) {
         this.router.navigate(['/404']);
       }
