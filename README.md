@@ -24,16 +24,17 @@ You can visit the project on [https://japonicagr.github.io/MovieProject](https:/
 - Option to fetch +20 movies for every click on the button 'More Movies' located on the top of the Sidebar
 - Option to filter the movies on the Sidebar through the Search Bar (need more than 3 characters)
 - Dialog box if an http request fail (we need to "break" this manually)
+- Reload page handling for optimal UX
 - Collapse Sidebar for small screens
 - Fully responsive
 
 ## Extra technologies used
 
--- Bootstrap 4 css
--- Angular Material Components
--- Material Icons
--- State Management with @NgRx & @NgRx/Effects
--- Angular [Star Rating package](https://www.npmjs.com/package/angular-star-rating) for star-vote presentation  
+- Bootstrap 4 css
+- Angular Material Components
+- Material Icons
+- State Management with @NgRx & @NgRx/Effects
+- Angular [Star Rating package](https://www.npmjs.com/package/angular-star-rating) for star-vote presentation  
 
 ## Build
 
