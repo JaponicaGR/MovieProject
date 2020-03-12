@@ -2,13 +2,38 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
 
-## Development server
+## Notice 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This build doesn't target es5 so DO NOT open with Internet Explorer
 
-## Code scaffolding
+## Installation Guide
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Open terminal and type `git clone https://github.com/JaponicaGR/MovieProject.git`
+2. Type `cd MovieProject`
+3. Type `npm i`
+4. Type `ng serve -o` and wait the browser to start
+5. Enjoy!
+
+## Online Version
+
+You can visit the project on [https://japonicagr.github.io/MovieProject](https://japonicagr.github.io/MovieProject)
+
+## Features
+
+- Basic navigation to movie details through the Sidebar
+- Option to fetch +20 movies for every click on the button 'More Movies' located on the top of the Sidebar
+- Option to filter the movies on the Sidebar through the Search Bar (need more than 3 characters)
+- Dialog box if an http request fail (we need to "break" this manually)
+- Collapse Sidebar for small screens
+- Fully responsive
+
+## Extra technologies used
+
+-- Bootstrap 4 css
+-- Angular Material Components
+-- Material Icons
+-- State Management with @NgRx & @NgRx/Effects
+-- Angular [Star Rating package](https://www.npmjs.com/package/angular-star-rating) for star-vote presentation  
 
 ## Build
 
@@ -17,11 +42,5 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Just a few attempts. Unit Testing is not in my skill set yet :|
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
